@@ -1,13 +1,28 @@
-.navbar-brand{
+/* .navbar-brand{
     margin-left: auto;
     margin-right: auto;
-}
+} */
 .container-fluid{
+    padding: 1%;
+}
+.navbar-color{
+    background-color: #53abf4;
+}
+.navbar-color-scroll{
     background-color: #54bbe1;
-    padding: 20px;
-    color: white;
 }
 .offcanvas{
     background-color: #53abf4;
     color: white;
+}
+.auth{
+    width: 20%;
+}
+.log{
+    margin-right: 20px;
+}
+.navbar-brand{
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
 }

@@ -1,0 +1,19 @@
+.photo-ab{
+    width: 90%;
+    box-shadow: 8px 5px 5px grey;
+}
+.header-ab{
+    text-align: left;
+    margin-right: 50px;
+}
+.about{
+    padding: 0;
+    margin: 0;
+    color: white;
+    padding: 8% 10%;
+}
+.text-ab{
+    line-height: 3;
+    text-align: left;
+    width: 600px;
+}
