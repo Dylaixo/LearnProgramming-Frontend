@@ -6,10 +6,10 @@ import PostRequest from '../test/test';
 
 
 function App() {
+  const token = localStorage.getItem('token');
   return (
     <div className='content'>
-      <Nonauth/>
-      <PostRequest></PostRequest>
+        {token == null ?  <Nonauth/> : <PostRequest/>}
     </div>
   );
 }

@@ -26,6 +26,7 @@ function RegisterForm() {
                 console.error(error);
                 // Tutaj możesz wyświetlić komunikat o błędzie rejestracji
             });
+            window.location.reload();
     };
     return (
         <Form onSubmit={handleSubmit}>

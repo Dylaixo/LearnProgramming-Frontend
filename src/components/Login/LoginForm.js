@@ -29,10 +29,7 @@ const LoginForm = () => {
           return acc;
         }, {}));
       }
-    };
-    const handleLogout = () => {
-      localStorage.removeItem('token');
-      setLoggedIn(false);
+      window.location.reload();
     };
     const token = localStorage.getItem('token');
     return (
@@ -58,9 +55,6 @@ const LoginForm = () => {
         {token == null ? <p>Nie jesteś zalogowany</p> : <p>Zalogowany</p>}
           <Button variant="primary" type="submit">
             Login
-          </Button>
-          <Button variant="primary" onClick={handleLogout}>
-            Logout
           </Button>
         </Form>
       </div>
