@@ -5,7 +5,7 @@ import LoginForm from './LoginForm';
 
 function Register() {
   const [show, setShow] = useState(false);
-
+  const [change, setChange] = useState(false)
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 

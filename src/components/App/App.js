@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navigaiton from '../Navigation/Navigaiton';
 import Slider from '../Slider/Slider';
 import About from '../About/About';
+import Options from '../Options/Options';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Navigaiton/>
       <About></About>
       <Slider/>
+      <Options />
     </div>
   );
 }

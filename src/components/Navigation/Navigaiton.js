@@ -6,12 +6,12 @@ import Login from '../Login/Login';
 import Register from '../Login/Register';
 import { FaLaptopCode } from "react-icons/fa";
 export default function Navigaiton() {
-    const [color, setColor] = useState(false)
+    const [change, setChange] = useState(false)
     const changeColor = () => {
         if (window.scrollY >= 80) {
-            setColor(true);
+            setChange(true);
         } else {
-            setColor(false);
+            setChange(false);
         }
     }
     window.addEventListener('scroll', changeColor)
@@ -19,11 +19,15 @@ export default function Navigaiton() {
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className="mb-3 pt-0 sticky-top navbar">
-                    <Container fluid className={color ? 'navbar-color' : 'navbar-color-scroll'}>
-                        <Navbar.Brand ><FaLaptopCode size={40} /></Navbar.Brand>
-                        <div className='auth'>
+                    <Container fluid className={change ? 'navbar-color' : 'navbar-color-scroll'}>
+                        <Navbar.Brand ><FaLaptopCode className={change ? 'change-size' : 'normal-size'} /></Navbar.Brand>
+                        <div className='auth row me-2'>
+                            <div className='col-lg-6  col-md-6 col-sm-6 col-6'>
                             <Login></Login>
+                            </div>
+                            <div className='col-lg-6 col-md-6 col-sm-6 col-6'>
                             <Register></Register>
+                            </div>
                         </div>
                         {/* <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
            <Navbar.Offcanvas id={`offcanvasNavbar-expand-${expand}`} aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`} placement="end">
