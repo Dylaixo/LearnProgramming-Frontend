@@ -7,9 +7,45 @@
     width: 1200px !important;
     height: 700px;
     border-radius: 5%;
+    border: 3px solid white;
 }
 .carousel-caption{
     color: white;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 2.5rem;
+}
+@media (max-width: 1260px){
+    .carousel-item img{
+        width: 1000px !important;
+    }
+    .carousel-caption{
+        font-size: 2rem;
+    }
+}
+@media (max-width: 1050px){
+    .carousel-item img{
+        width: 800px !important;
+        height: 500px;
+    }
+    .carousel-caption{
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 850px){
+    .carousel-item img{
+        width: 600px !important;
+        height: 400px;
+    }
+    .carousel-caption{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 620px){
+    .carousel-item img{
+        width: 400px !important;
+        height: 300px;
+    }
+    .carousel-caption{
+        font-size: 0.4rem;
+    }
 }

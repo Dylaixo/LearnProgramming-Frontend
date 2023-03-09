@@ -8,6 +8,10 @@ function App() {
   return (
     <div className='content'>
       <Nonauth/>
+      <Navigaiton/>
+      <About></About>
+      <Slider/>
+      <Options />
     </div>
   );
 }
