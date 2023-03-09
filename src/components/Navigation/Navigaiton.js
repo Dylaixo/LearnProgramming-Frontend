@@ -8,7 +8,7 @@ import { FaLaptopCode } from "react-icons/fa";
 export default function Navigaiton() {
     const [change, setChange] = useState(false)
     const changeColor = () => {
-        if (window.scrollY >= 80) {
+        if (window.scrollY >= 70) {
             setChange(true);
         } else {
             setChange(false);
