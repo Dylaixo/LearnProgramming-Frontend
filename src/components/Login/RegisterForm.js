@@ -1,56 +1,93 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
+
 function RegisterForm() {
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    });
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [authCode, setAuthCode] = useState(false);
+  const [verificationCode, setVerificationCode] = useState('');
 
-    const handleChange = event => {
-        const { name, value } = event.target;
-        setFormData(prevState => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-    const handleSubmit = event => {
-        event.preventDefault();
-        axios.post('http://127.0.0.1:8000/register', formData)
-            .then(response => {
-                console.log(response.data);
-                // Tutaj możesz wykonać odpowiednią akcję po rejestracji
-            })
-            .catch(error => {
-                console.error(error);
-                // Tutaj możesz wyświetlić komunikat o błędzie rejestracji
-            });
-            window.location.reload();
-    };
-    return (
-        <Form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="formBasicUsername">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="username" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" name="email" value={formData.email} onChange={handleChange} />
-            </Form.Group>
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
-                <Form.Text className="text-muted">
-                    We'll never share your password with anyone else.
-                </Form.Text>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
-    );
+  const handleVerificationCodeChange = (event) => {
+    setVerificationCode(event.target.value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/register', formData);
+      console.log(response.data);
+      setAuthCode(true);
+    } catch (error) {
+      console.error(error);
+      // handle error
+    }
+  };
+
+  const handleVerifyCode = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/register', {
+        email: formData.email,
+        code: verificationCode,
+      });
+      if (response.data === 'success') {
+        console.log('Verification success!');
+        // create user
+      } else {
+        console.log('Verification failed!');
+        // handle failed verification
+      }
+    } catch (error) {
+      console.error(error);
+      // handle error
+    }
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="username" placeholder="Username" name="username" value={formData.username} onChange={handleChange} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
+        <Form.Control type="email" placeholder="Enter email" name="email" value={formData.email} onChange={handleChange} />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" name="password" value={formData.password} onChange={handleChange} />
+        <Form.Text className="text-muted">
+          We'll never share your password with anyone else.
+        </Form.Text>
+      </Form.Group>
+
+      {authCode ? (
+        <Form.Group className="mb-3" controlId="formBasicCode">
+          <Form.Label>Enter code:</Form.Label>
+          <Form.Control type="string" placeholder="Enter verification code..." name="code" value={verificationCode} onChange={handleVerificationCodeChange} />
+          <Button variant="primary" type="button" onClick={handleVerifyCode}>
+            Verify Code
+          </Button>
+        </Form.Group>
+      ) : (
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      )}
+    </Form>
+  );
 }
 
 export default RegisterForm;
