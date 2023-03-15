@@ -7,10 +7,10 @@ const LoginForm = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
     const [loggedIn, setLoggedIn] = useState(false);
-  
+
     const handleLogin = async (e) => {
       e.preventDefault();
-      const data = { body: { username: 'user1', password: 'user1'} };
+      const data = { body: { username: username, password: password} };
       const headers = {
         'Access-Control-Allow-Credentials': true,
         'Content-Type': 'multipart/form-data'
@@ -21,15 +21,16 @@ const LoginForm = () => {
         const token = response.data.access_token;
         localStorage.setItem('token', token);
         setLoggedIn(true);
+        window.location.reload();
       } catch (error) {
-        console.error(error.response);
-        setErrors(error.response.data.detail.reduce((acc, error) => {
-          const field = error.loc[1];
-          acc[field] = error.msg;
-          return acc;
-        }, {}));
+        // console.error(error.response);
+        // setErrors(error.response.data.detail.reduce((acc, error) => {
+        //   const field = error.loc[1];
+        //   acc[field] = error.msg;
+        //   return acc;
+        // }, {}));
+        alert("Błędny login lub hasło!")
       }
-      window.location.reload();
     };
     const token = localStorage.getItem('token');
     return (
@@ -44,7 +45,7 @@ const LoginForm = () => {
               {errors.username}
             </Form.Control.Feedback>
           </Form.Group>
-  
+
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} isInvalid={!!errors.password} />
@@ -52,7 +53,7 @@ const LoginForm = () => {
               {errors.password}
             </Form.Control.Feedback>
           </Form.Group>
-        {token == null ? <p>Nie jesteś zalogowany</p> : <p>Zalogowany</p>}
+        {/* {token == null ? <p>Nie jesteś zalogowany</p> : <p>Zalogowany</p>} */}
           <Button variant="primary" type="submit">
             Login
           </Button>
@@ -60,5 +61,5 @@ const LoginForm = () => {
       </div>
     );
   };
-  
+
   export default LoginForm;

@@ -28,29 +28,34 @@ function RegisterForm() {
     try {
       const response = await axios.post('http://127.0.0.1:8000/register', formData);
       console.log(response.data);
+      console.log(JSON.stringify(response.data))
+      console.log('wysłano kod na email: ' + JSON.stringify(response.data.email))
       setAuthCode(true);
     } catch (error) {
       console.error(error);
-      // handle error
     }
   };
 
   const handleVerifyCode = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/register', {
+      const response = await axios.post(`http://127.0.0.1:8000/activate?code=${verificationCode}`, {
         email: formData.email,
         code: verificationCode,
       });
-      if (response.data === 'success') {
-        console.log('Verification success!');
-        // create user
+      console.log(JSON.stringify(response.data))
+      if (response.data.activated == true) {
+        setInterval(function() {
+          window.location.reload();
+        }, 1000);
+        alert("Utworzono konto!")
       } else {
         console.log('Verification failed!');
-        // handle failed verification
+        // handle failed verification'
+        // setInterval
       }
     } catch (error) {
       console.error(error);
-      // handle error
+      alert("Błędny kod!")
     }
   };
 
