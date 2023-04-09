@@ -1,0 +1,26 @@
+.logout{
+    margin-left: auto !important;
+}
+.NavAuth{
+    background-color: #53abf4;
+    padding: 0.7% 3%;
+}
+.NavAuth .nav-link{
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: white;
+    margin-right: 30px;
+}
+.NavAuth .nav-link:hover{
+    color: black;
+    transition: 0.3s ease-in;
+}
+.navbar-collapse{
+    margin-left: 2rem;
+}
+.basic-nav-dropdown{
+
+}
+.profile{
+    margin-right: 45px !important;
+}

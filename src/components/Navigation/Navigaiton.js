@@ -20,7 +20,7 @@ export default function Navigaiton() {
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className="mb-3 pt-0 sticky-top navbar">
                     <Container fluid className={change ? 'navbar-color' : 'navbar-color-scroll'}>
-                        <Navbar.Brand ><FaLaptopCode className={change ? 'change-size' : 'normal-size'} /></Navbar.Brand>
+                        <Navbar.Brand className='MainLogo' ><FaLaptopCode className={change ? 'change-size' : 'normal-size'} /></Navbar.Brand>
                         <div className='auth row me-2'>
                             <div className='col-lg-6  col-md-6 col-sm-6 col-6'>
                             <Login></Login>

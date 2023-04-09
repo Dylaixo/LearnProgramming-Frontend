@@ -6,12 +6,12 @@ import Slider from '../Slider/Slider'
 
 function Nonauth() {
     return (
-        <>
+        <div className='content'>
             <Navigaiton />
             <About />
             <Slider />
             <Options/>
-        </>
+        </div>
     )
 }
 

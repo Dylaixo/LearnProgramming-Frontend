@@ -8,7 +8,7 @@ import Auth from '../Auth/Auth';
 function App() {
   const token = localStorage.getItem('token');
   return (
-    <div className='content'>
+    <div>
         {token == null ?  <Nonauth/> : <Auth/>}
     </div>
   );
