@@ -1,0 +1,32 @@
+@import 'variables.scss';
+
+//About resposive
+@mixin responsiveAbout {
+    @media (max-width: $telephone) {
+        .aboutText {
+            margin-top: 50px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .aboutPhoto {
+            width: 100%;
+        }
+
+        .aboutHeader {
+            text-align: center;
+            width: 100%;
+        }
+
+    }
+
+    @media (max-width: $laptop) {
+        .aboutText {
+            font-size: 0.9rem;
+        }
+
+        .aboutPhoto {
+            width: 100%;
+        }
+    }
+}

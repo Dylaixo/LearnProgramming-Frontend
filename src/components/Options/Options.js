@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 function Options() {
     return (
         <div className='row me-0 pe-0 mt-5 pb-5'>
-            <div className='col-lg-4 option'>
+            <div className='col-lg-4'>
                 <Card>
                     <Card.Body>
                         <Card.Title>Start now!</Card.Title>
@@ -15,7 +15,7 @@ function Options() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className='col-lg-4 option' >
+            <div className='col-lg-4' >
                 <Card>
                     <Card.Body>
                         <Card.Title>Join us!</Card.Title>
@@ -25,7 +25,7 @@ function Options() {
                     </Card.Body>
                 </Card>
             </div>
-            <div className='col-lg-4 option'>
+            <div className='col-lg-4'>
                 <Card>
                     <Card.Body>
                         <Card.Title>Join us!</Card.Title>

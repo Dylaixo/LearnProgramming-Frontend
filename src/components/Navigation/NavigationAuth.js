@@ -5,7 +5,7 @@ import "./NavigationAuth.css"
 import { GiExitDoor } from "react-icons/gi";
 import { FaLaptopCode } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
-
+import NavigationAuthStyles from '../../modules/NavigationAuth.module.scss'
 const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.reload();
@@ -13,24 +13,24 @@ const handleLogout = () => {
 
 function NavigationAuth() {
   return (
-    <Navbar  className='NavAuth sticky-top' expand="lg">
+    <Navbar  className="NavAuth sticky-top" expand="lg">
 
         <Navbar.Brand><FaLaptopCode/></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Courses</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/courses">Courses</Nav.Link>
             <NavDropdown title="Category" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Frontend</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Backedn</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Script languages</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Object oriented programming</NavDropdown.Item>
+              <NavDropdown.Item href="/category/frontend">Frontend</NavDropdown.Item>
+              <NavDropdown.Item href="/category/backend">Backedn</NavDropdown.Item>
+              <NavDropdown.Item href="/category/script">Script languages</NavDropdown.Item>
+              <NavDropdown.Item href="/category/oop">Object oriented programming</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
-        <Nav.Link className='profile'>Profile <BsFillPersonFill size={40}/></Nav.Link>
-        <Nav.Link className='logout'><GiExitDoor size={40} onClick={handleLogout} /></Nav.Link>
+        <Nav.Link href='/profile' className={NavigationAuthStyles.profile}>Profile <BsFillPersonFill size={40}/></Nav.Link>
+        <Nav.Link className={NavigationAuthStyles.logout}><GiExitDoor size={40} onClick={handleLogout} /></Nav.Link>
     </Navbar>
   );
 }

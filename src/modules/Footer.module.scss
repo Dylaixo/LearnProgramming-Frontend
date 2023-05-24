@@ -1,0 +1,20 @@
+.footer{
+    padding: 4% 10% 2%;
+    background-color: #53abf4;
+    margin: 0px;
+    margin-top: 100px;
+    color: white;
+    width: 100vw;
+    .footerLogo{
+        text-align: center;
+    }
+    .socials{
+        display: flex;
+        justify-content: space-around
+    }
+    .socials svg:hover{
+        color: black;
+        transition: 0.3s ease-in;
+        cursor: pointer;
+    }
+}

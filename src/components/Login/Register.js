@@ -1,20 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import RegisterForm from './RegisterForm';
+import { useDispatch, useSelector } from 'react-redux';
+import {sideFormActions} from '../../store/offcanvas-slice';
+import { registerActions } from '../../store/registerForm-slice';
 
 function Register() {
-  const [show, setShow] = useState(false);
+  const showRegister = useSelector(state => state.sideForm.showRegister)
+  const isAuth = useSelector(state => state.registerForm.isAuth)
+  const dispatch = useDispatch();
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseRegister = () => {
+    dispatch(sideFormActions.setRegister());
+    if(isAuth){
+      dispatch(registerActions.setIsCode())
+    }
+  };
+
+  const handleShowRegister = () => {
+    dispatch(sideFormActions.setRegister());
+  };
 
   return (
     <>
-      <Button variant="outline-primary" onClick={handleShow}>
+      <Button variant="outline-primary" onClick={handleShowRegister}>
         Register
       </Button>
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={showRegister} onHide={handleCloseRegister}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Register</Offcanvas.Title>
         </Offcanvas.Header>

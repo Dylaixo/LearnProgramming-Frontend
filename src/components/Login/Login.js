@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginForm from './LoginForm';
+import { useDispatch, useSelector } from 'react-redux';
+import {sideFormActions} from '../../store/offcanvas-slice';
 
-function Register() {
-  const [show, setShow] = useState(false);
-  const [change, setChange] = useState(false)
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+function Login() {
+  const showLogin = useSelector(state => state.sideForm.showLogin)
+  const dispatch = useDispatch();
+
+  const handleClose = () => {
+    dispatch(sideFormActions.setLogin());
+  };
+
+  const handleShow = () => {
+    dispatch(sideFormActions.setLogin());
+  };
 
   return (
     <>
       <Button className='log' variant="outline-primary" onClick={handleShow}>
         Log in
       </Button>
-      <Offcanvas show={show} onHide={handleClose}>
+      <Offcanvas show={showLogin} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Log in</Offcanvas.Title>
         </Offcanvas.Header>
@@ -25,4 +33,4 @@ function Register() {
     </>
   );
 }
-export default Register;
+export default Login;

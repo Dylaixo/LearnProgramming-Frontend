@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginActions } from '../../store/loginForm-slice';
 
 const LoginForm = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [errors, setErrors] = useState({});
-    const [loggedIn, setLoggedIn] = useState(false);
+
+    const dispatch = useDispatch();
+    // const loggedIn = useSelector(state => state.loginForm.setLoggedIn)
+    const errors = useSelector(state => state.loginForm.errors)
+    const dataForm = useSelector(state => state.loginForm.data)
 
     const handleLogin = async (e) => {
       e.preventDefault();
-      const data = { body: { username: username, password: password} };
+      const data = { body: dataForm };
       const headers = {
         'Access-Control-Allow-Credentials': true,
         'Content-Type': 'multipart/form-data'
@@ -20,7 +23,7 @@ const LoginForm = () => {
         console.log(response.data.access_token)
         const token = response.data.access_token;
         localStorage.setItem('token', token);
-        setLoggedIn(true);
+        dispatch(loginActions.setLoggedIn())
         window.location.reload();
       } catch (error) {
         // console.error(error.response);
@@ -32,7 +35,14 @@ const LoginForm = () => {
         alert("Błędny login lub hasło!")
       }
     };
-    const token = localStorage.getItem('token');
+
+    const handleChange = (event) => {
+      const { name, value } = event.target;
+      dispatch(loginActions.setData({ ...dataForm, [name]: value }));
+    };
+
+    // const token = localStorage.getItem('token');
+
     return (
       <div className="container">
         <h1>Login</h1>
@@ -40,7 +50,7 @@ const LoginForm = () => {
         <Form onSubmit={handleLogin}>
           <Form.Group controlId="formBasicUsername">
             <Form.Label>Username</Form.Label>
-            <Form.Control type="text" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} isInvalid={!!errors.username} />
+            <Form.Control type="text" placeholder="Enter username" name="username" value={dataForm.username} onChange={handleChange} isInvalid={!!errors.username} />
             <Form.Control.Feedback type="invalid">
               {errors.username}
             </Form.Control.Feedback>
@@ -48,7 +58,7 @@ const LoginForm = () => {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} isInvalid={!!errors.password} />
+            <Form.Control type="password" placeholder="Password" name="password" value={dataForm.password} onChange={handleChange} isInvalid={!!errors.password} />
             <Form.Control.Feedback type="invalid">
               {errors.password}
             </Form.Control.Feedback>
