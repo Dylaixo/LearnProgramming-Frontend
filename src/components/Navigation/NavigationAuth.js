@@ -10,6 +10,7 @@ const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.reload();
   };
+const categories = ["cat1", "cat2", "cat3", "cat4"];
 
 function NavigationAuth() {
   return (
@@ -22,10 +23,13 @@ function NavigationAuth() {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/courses">Courses</Nav.Link>
             <NavDropdown title="Category" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/category/frontend">Frontend</NavDropdown.Item>
+              {categories.map((cat, index) => (
+                   <NavDropdown.Item key={index} href={`/category/${cat}`}>{cat}</NavDropdown.Item>
+            ))}
+              {/* <NavDropdown.Item href="/category/frontend">Frontend</NavDropdown.Item>
               <NavDropdown.Item href="/category/backend">Backedn</NavDropdown.Item>
               <NavDropdown.Item href="/category/script">Script languages</NavDropdown.Item>
-              <NavDropdown.Item href="/category/oop">Object oriented programming</NavDropdown.Item>
+              <NavDropdown.Item href="/category/oop">Object oriented programming</NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

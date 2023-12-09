@@ -1,6 +1,7 @@
 .NavAuth {
     background-color: #53abf4;
     padding: 0.7% 3%;
+    width: 100vw;
 }
 
 .NavAuth .nav-link {

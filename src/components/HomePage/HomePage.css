@@ -1,0 +1,99 @@
+
+img{
+    width: 100px;
+}
+.author{
+    margin: 0;
+}
+.card{
+    width: 80%;
+    height: 100% !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+.rate{
+    color: white;
+}
+.rating{
+    display: block;
+}
+.card-text{
+    text-align: left;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+.slabLink{
+    line-height: 2;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+}
+.slabLink:hover{
+    text-decoration: underline;
+    color: black
+}
+.text-muted{
+    text-align: left;
+}
+.card-title{
+    text-align: left;
+    justify-content: left;
+    font-size: 1.1rem;
+    padding-top: 10px;
+}
+.card-title, .list-title{
+    font-family: 'Oswald', sans-serif;
+}
+.more{
+    font-weight: bold;
+    margin-bottom: 0 !important;
+    border: 0;
+    width: unset;
+}
+.divide{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px!important;
+    width: 200px!important;
+    border-top: 4px dotted grey;
+}
+.list{
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+}
+.listLink{
+    color: black;
+    text-decoration: none;
+    margin-top: 60px !important;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.listLink:hover{
+    color: black;
+    text-decoration: underline;
+}
+.listDesc{
+    line-height: 2;
+}
+.listDesc, .card-text{
+    font-family: 'Signika Negative', sans-serif;
+}
+.postedDate{
+    margin-bottom: 0;
+}
+.postedDate, .card-footer{
+    font-family: 'Montserrat', sans-serif;
+}
+.modal-title{
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+}
+.modal-body{
+    font-family: 'Signika Negative', sans-serif
+}
+.modal-body a{
+    color: black;
+}
+.modal-backdrop.show{
+    opacity: 0.6 !important;
+}
