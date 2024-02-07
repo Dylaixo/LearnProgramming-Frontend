@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import { Button } from 'react-bootstrap';
+import './Course.css';
 const Course = () => {
   const location = useLocation();
   const { state } = location;
+  const [activeLesson, setActiveLesson] = useState(null);
   const lessonData = [
     {
       id: 1,
@@ -48,19 +50,36 @@ const Course = () => {
   //   return <div>No data available</div>;
   // }
 
-  const { title, description, author, url } = state || {};
-
+  const { title, description, author, url } = state;
+  const toggleLesson = (id) => {
+    setActiveLesson(activeLesson === id ? null : id);
+  };
   return (
-    <div>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <h5>Author: {author}</h5>
-      <p>URL: {url}</p>
 
-      <h2>Lessons:</h2>
+    <div>
+    <div className="course-container">
+      <img src={"https://images.wsj.net/im-869935/social"} alt={title} className="course-image" />
+      <div className="course-details">
+        <h2 className="course-title">{title}</h2>
+        <p className="course-description">{description}</p>
+        <Button variant="outline-primary" className='button' >
+        <span>Check course </span>
+      </Button>
+      </div>
+    </div>
       <ul>
-        {lessonData.map((lesson) => (
-          <li key={lesson.id}>{lesson.title}</li>
+                {lessonData.map((lesson) => (
+          <li key={lesson.id}>
+            <button className="lesson-button" onClick={() => toggleLesson(lesson.id)}>
+              {lesson.title}
+            </button>
+            {activeLesson === lesson.id && (
+              <div className="lesson-content">
+                <p>{lesson.content}</p>
+                {/* Dodaj inne informacje, które chcesz wyświetlić */}
+              </div>
+            )}
+          </li>
         ))}
       </ul>
       {/* Dodaj inne informacje, które chcesz wyświetlić */}

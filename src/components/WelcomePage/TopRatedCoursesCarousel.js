@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import './TopRatedCoursesCarousel.css';
 
 function TopRatedCoursesCarousel() {
   // Stała tablica z przykładowymi danymi kursów
@@ -20,6 +21,70 @@ function TopRatedCoursesCarousel() {
       numberOfRating: 95,
       author: 'Jane Smith',
     },
+    {
+        id: 2,
+        title: 'Kurs JavaScript2',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript3',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
+      {
+        id: 2,
+        title: 'Kurs JavaScript5',
+        description: 'Zaawansowany kurs JavaScript',
+        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
+        numberOfRating: 95,
+        author: 'Jane Smith',
+      },
     // Dodaj więcej kursów według potrzeby
   ];
 
@@ -34,10 +99,10 @@ function TopRatedCoursesCarousel() {
           <Carousel.Item key={index}>
             {/* Wyświetlanie obrazu w karuzeli */}
             <img
-              className="d-block w-100"
+              className="d-block w-100 img-welcome"
               src={course.image}
               alt={course.title}
-              style={{ borderRadius: 0 }} // Usunięcie zaokrąglonych rogów
+
             />
             {/* Wyświetlanie Caption na obrazie */}
             <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', color: 'white' }}>

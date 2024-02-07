@@ -1,0 +1,77 @@
+.course-container {
+    padding: 20px;
+  }
+  ul {
+    list-style: none !important;
+    margin-top: 3%;
+  }
+  .lesson-button {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: left;
+    transition: background-color 0.2s ease;
+  }
+  .lesson-header{
+    text-align: center;
+    padding: 2% 3%;
+  }
+  .lesson-button:hover {
+    background-color: #e0e0e0;
+  }
+
+  .lesson-content {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-left: 2px solid #ccc;
+    margin-left: 10px;
+    transition: opacity 2s ease;
+    overflow: hidden;
+  }
+
+  .lesson-content p {
+    margin: 0;
+    opacity: 1;
+  }
+
+  .lesson-content.show {
+    max-height: 500px; /* Maksymalna wysokość, aby pokazać całą zawartość */
+  }
+  .course-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .course-image {
+    width: 35%; /* Dostosuj szerokość obrazu według potrzeb */
+    margin-right: 20px; /* Dodaj odstęp między obrazem a tekstem */
+    border-radius: 8px; /* Zaokrąglij rogi obrazka */
+  }
+/*
+  .course-details {
+    flex-grow: 1;
+  }
+ */
+  .course-title {
+    font-size: 2rem; /* Dostosuj rozmiar czcionki tytułu */
+    margin-bottom: 10px; /* Dodaj odstęp na dole tytułu */
+    align-items: flex-start;
+  }
+
+  .course-description {
+    font-size: 1.3rem; /* Dostosuj rozmiar czcionki opisu */
+    line-height: 1.5; /* Ustaw odstęp między liniami */
+    width: 50%;
+    text-align: justify;
+  }
+
+  .course-info {
+    padding: 10px; /* Dodaj padding dla informacji o kursie */
+    border: 1px solid #ccc; /* Dodaj obramowanie */
+    border-radius: 8px; /* Zaokrąglij rogi */
+    background-color: #f9f9f9; /* Dodaj tło */
+  }
