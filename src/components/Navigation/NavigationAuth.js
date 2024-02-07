@@ -21,7 +21,7 @@ function NavigationAuth() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/courses">Courses</Nav.Link>
+            <Nav.Link href="/Courses">Courses</Nav.Link>
             <NavDropdown title="Category" id="basic-nav-dropdown">
               {categories.map((cat, index) => (
                    <NavDropdown.Item key={index} href={`/category/${cat}`}>{cat}</NavDropdown.Item>

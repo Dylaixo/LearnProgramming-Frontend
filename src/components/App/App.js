@@ -1,9 +1,11 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Nonauth from '../Nonauth/Nonauth';
 import Auth from '../Auth/Auth';
 import Container from 'react-bootstrap/esm/Container';
 import "./App.css"
+
 function App() {
   const token = localStorage.getItem('token');
   return (
@@ -12,7 +14,7 @@ function App() {
     </div>*/
     <Container fluid >
     <div>
-      <Auth></Auth>
+      <Auth/>
     </div>
     </Container>
   );
