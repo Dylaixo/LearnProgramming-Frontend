@@ -1,96 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './TopRatedCoursesCarousel.css';
+import axios from 'axios';
 
 function TopRatedCoursesCarousel() {
-  // Stała tablica z przykładowymi danymi kursów
-  const courses = [
-    {
-      id: 1,
-      title: 'Kurs React',
-      description: 'Nauka React od podstaw',
-      image: 'https://images.wsj.net/im-869935/social',
-      numberOfRating: 100,
-      author: 'John Doe',
-    },
-    {
-      id: 2,
-      title: 'Kurs JavaScript',
-      description: 'Zaawansowany kurs JavaScript',
-      image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-      numberOfRating: 95,
-      author: 'Jane Smith',
-    },
-    {
-        id: 2,
-        title: 'Kurs JavaScript2',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript3',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-      {
-        id: 2,
-        title: 'Kurs JavaScript5',
-        description: 'Zaawansowany kurs JavaScript',
-        image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_social_share_1200x630_center,f_auto,q_auto:best/rockcms/2023-10/travis-klelce-taylor-swift-zz-231016-f11d9b.jpg',
-        numberOfRating: 95,
-        author: 'Jane Smith',
-      },
-    // Dodaj więcej kursów według potrzeby
-  ];
-
+  const [courses, setCourses] = useState([]);
   // Sortowanie kursów według oceny
-  const sortedCourses = [...courses].sort((a, b) => b.numberOfRating - a.numberOfRating);
+  const loginToken = localStorage.getItem('token');
+  useEffect(() => {
+    const headers = {
+      'Authorization': `Bearer ${loginToken}`,
+    };
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('http://34.136.176.140:8000/api/courses/', {headers});
+        setCourses(response.data);
+        console.log(courses)
+      } catch (error) {
+        console.error('Error fetching courses data:', error);
+      }
+    };
+    fetchCourses();
+  }, []);
 
+  const sortedCourses = [...courses].sort((a, b) => b.avg_rating - a.avg_rating );
+  console.log(sortedCourses )
   return (
     <div style={{ maxWidth: '50%', margin: '0 auto' }}>
     <h1 style={{textAlign: 'center'}}>Najlepiej oceniane</h1>
@@ -99,15 +33,15 @@ function TopRatedCoursesCarousel() {
           <Carousel.Item key={index}>
             {/* Wyświetlanie obrazu w karuzeli */}
             <img
-              className="d-block w-100 img-welcome"
-              src={course.image}
+              className="d-block w-100 top-rate"
+              src={course.url}
               alt={course.title}
-
+              style={{ borderRadius: 0 }} // Usunięcie zaokrąglonych rogów
             />
             {/* Wyświetlanie Caption na obrazie */}
             <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', color: 'white' }}>
               <h3>{course.title}</h3>
-              <p>{course.description}</p>
+              <p>{course.short_desc}</p>
               {/* Dodatkowe informacje o kursie */}
               {/* Ocena, autor, liczba ocen, link do kursu itp. */}
             </div>

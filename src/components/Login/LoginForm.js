@@ -18,20 +18,17 @@ const LoginForm = () => {
         'Access-Control-Allow-Credentials': true,
         'Content-Type': 'multipart/form-data'
       };
+      console.log(dataForm)
       try {
-        const response = await axios.post('http://127.0.0.1:8000/login', data.body, { headers });
+        const response = await axios.post('http://34.136.176.140:8000/api/token/', data.body, { headers });
         console.log(response.data.access_token)
-        const token = response.data.access_token;
+        console.log(data.body)
+        const token = response.data.access;
         localStorage.setItem('token', token);
         dispatch(loginActions.setLoggedIn())
         window.location.reload();
       } catch (error) {
-        // console.error(error.response);
-        // setErrors(error.response.data.detail.reduce((acc, error) => {
-        //   const field = error.loc[1];
-        //   acc[field] = error.msg;
-        //   return acc;
-        // }, {}));
+        console.error(error.response);
         alert("Błędny login lub hasło!")
       }
     };

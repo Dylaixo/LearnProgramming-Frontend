@@ -11,7 +11,9 @@
     cursor: pointer;
     margin: 5px;
   }
-
+  .form-label{
+    margin-top: 10px;
+  }
   .button span {
     cursor: pointer;
     display: inline-block;
@@ -35,4 +37,106 @@
   .button:hover span:after {
     opacity: 1;
     right: 0;
+  }
+
+  .comments-list {
+    overflow-y: auto;
+    max-height: 200px;
+    width: 100% !important;
+  }
+
+  /* Pasek przewijania */
+  .comments-list::-webkit-scrollbar {
+    width: 10px;
+    margin-right: 5px;
+  }
+
+  /* Track */
+  .comments-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 5px;
+  }
+
+  /* Pasek */
+  .comments-list::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+
+  .loading-icon {
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ustawia kontener na pełną wysokość widoku */
+  }
+  .rating-label{
+    text-align: center;
+    width: 100%;
+    padding: 3% 1%;
+    font-size: 1.2rem;
+  }
+  /* .form-control{
+    width: 70%;
+  } */
+  .modal-body{
+    width: 70%;
+  }
+  .modal-footer{
+    justify-content: center;
+  }
+  .justify-content-between{
+    width: 30%;
+  }
+  .btn-primary{
+    margin-left: 20px;
+  }
+  .slabLink-addLesson{
+    display: flex;
+    justify-content: flex-end;
+    margin: 2% 10%;
+    z-index: 999;
+    color: #53abf4;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .add-lesson-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .btn-danger {
+    margin-left: 20px;
+  }
+  .share-title{
+    text-align: center;
+    padding: 2% 5% ;
+  }
+  /* .comment-add{
+    width: 100%;
+    text-align: center;
+  } */
+  .add-holder{
+    display: flex;
+    align-items: end;
+  }
+  .add-button{
+    margin: 0;
+  }
+  .course-details{
+    width: 100%;
+  }
+  .course-detail{
+    width: 50%;
   }

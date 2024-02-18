@@ -4,6 +4,7 @@
   ul {
     list-style: none !important;
     margin-top: 3%;
+    height: 40vh;
   }
   .lesson-button {
     background-color: #f0f0f0;
@@ -12,7 +13,7 @@
     margin-bottom: 5px;
     cursor: pointer;
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     text-align: left;
     transition: background-color 0.2s ease;
   }
@@ -47,15 +48,15 @@
   }
 
   .course-image {
-    width: 35%; /* Dostosuj szerokość obrazu według potrzeb */
+    width: 40%; /* Dostosuj szerokość obrazu według potrzeb */
     margin-right: 20px; /* Dodaj odstęp między obrazem a tekstem */
     border-radius: 8px; /* Zaokrąglij rogi obrazka */
+    height: 60vh;
   }
-/*
   .course-details {
-    flex-grow: 1;
+    width: 100%;
   }
- */
+
   .course-title {
     font-size: 2rem; /* Dostosuj rozmiar czcionki tytułu */
     margin-bottom: 10px; /* Dodaj odstęp na dole tytułu */
@@ -65,7 +66,7 @@
   .course-description {
     font-size: 1.3rem; /* Dostosuj rozmiar czcionki opisu */
     line-height: 1.5; /* Ustaw odstęp między liniami */
-    width: 50%;
+    width: 100%;
     text-align: justify;
   }
 
@@ -74,4 +75,32 @@
     border: 1px solid #ccc; /* Dodaj obramowanie */
     border-radius: 8px; /* Zaokrąglij rogi */
     background-color: #f9f9f9; /* Dodaj tło */
+  }
+
+  .loading-icon {
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5
+    0vh; /* Ustawia kontener na pełną wysokość widoku */
+  }
+  .send-email{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .edit-icon{
+     margin-left: 15px ;
   }

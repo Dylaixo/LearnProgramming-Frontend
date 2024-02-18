@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ function RegisterForm() {
   const dataForm = useSelector(state => state.registerForm.data)
   const isAuth = useSelector(state=> state.registerForm.isAuth)
   const authCode = useSelector(state=> state.registerForm.authCode)
+  const [isAdded, setIsAdded] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,14 +20,15 @@ function RegisterForm() {
   const handleVerificationCodeChange = (event) => {
     dispatch(registerActions.setAuthCode(event.target.value));
   };
-
+console.log(dataForm)
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/register', dataForm);
+      const response = await axios.post('http://34.136.176.140:8000/api/users/', dataForm);
       console.log(response.data);
       console.log(JSON.stringify(response.data))
       console.log('wysłano kod na email: ' + JSON.stringify(dataForm.email))
+      setIsAdded(!isAdded)
       dispatch(registerActions.setIsCode())
     } catch (error) {
       console.error(error);
@@ -35,7 +37,7 @@ function RegisterForm() {
 
   const handleVerifyCode = async () => {
     try {
-      const response = await axios.post(`http://127.0.0.1:8000/activate?code=${authCode}`, {
+      const response = await axios.post(`http://34.136.176.140:8000/api/users/`, {
         email: dataForm.email,
         code: authCode,
       });
@@ -67,24 +69,18 @@ function RegisterForm() {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
         <Form.Control type="password" placeholder="Password" name="password" value={dataForm.password} onChange={handleChange} />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Confirm password</Form.Label>
+        <Form.Control type="password" placeholder="Confirm password" name="password2" value={dataForm.password2} onChange={handleChange} />
         <Form.Text className="text-muted">
           We'll never share your password with anyone else.
         </Form.Text>
       </Form.Group>
-
-      {isAuth ? (
-        <Form.Group className="mb-3" controlId="formBasicCode">
-          <Form.Label>Enter code:</Form.Label>
-          <Form.Control type="string" placeholder="Enter verification code..." name="code" value={authCode} onChange={handleVerificationCodeChange} />
-          <Button variant="primary" type="button" onClick={handleVerifyCode}>
-            Verify Code
-          </Button>
-        </Form.Group>
-      ) : (
-        <Button variant="primary" type="submit">
+        <Button variant="primary" style={{width: '100px'}} type="submit">
           Submit
         </Button>
-      )}
+        {isAdded && (<p>Registred successfully. Now you can log in</p>)}
     </Form>
   );
 }

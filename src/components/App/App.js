@@ -9,12 +9,13 @@ import "./App.css"
 function App() {
   const token = localStorage.getItem('token');
   return (
-    /*<div>
-         {token == null ? <Nonauth /> : <Auth />}
-    </div>*/
+
     <Container fluid >
-    <div>
+    {/* <div>
       <Auth/>
+    </div> */}
+    <div>
+         {token == null ? <Nonauth /> : <Auth />}
     </div>
     </Container>
   );

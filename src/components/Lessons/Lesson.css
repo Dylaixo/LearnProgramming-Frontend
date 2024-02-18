@@ -1,0 +1,35 @@
+.textarea-container {
+    display: flex;
+    height: 300px;
+    overflow: hidden;
+
+}
+
+  .line-numbers {
+    width: 50px; /* Szerokość obszaru z numerami linii */
+    border-right: 1px solid #ccc;
+    font-size: 14px
+  }
+
+  .textarea {
+    flex: 1;
+    padding-left: 10px;
+    border: none;
+    font-family: monospace;
+    font-size: 14px;
+    overflow: hidden; /* Ukryj pasek przewijania w textarea */
+  }
+  .textarea:focus{
+    outline: none;
+  }
+
+.code-input-container{
+    margin-right: 10%;
+}
+/* .lesson-container{
+    height: 70vh;
+} */
+.submit-code-btn{
+    margin-top: 50px;
+    width: 100px;
+}

@@ -1,7 +1,7 @@
-
+/*
 img{
-    width: 100px;
-}
+    width: 500px ! ;
+} */
 .author{
     margin: 0;
 }
@@ -36,13 +36,18 @@ img{
     text-align: left;
 }
 .card-title{
-    text-align: left;
+    text-align: center  ;
     justify-content: left;
-    font-size: 1.1rem;
-    padding-top: 10px;
+    font-size: 1.5rem;
+    padding: 2% 1%;
+}
+.card-img-bottom{
+    width: 100%;
+    height: 30vh;
 }
 .card-title, .list-title{
     font-family: 'Oswald', sans-serif;
+    font-size: 1.5rem;
 }
 .more{
     font-weight: bold;
@@ -97,3 +102,96 @@ img{
 .modal-backdrop.show{
     opacity: 0.6 !important;
 }
+.add-course-btn {
+    position: fixed;
+    top: 30%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 999;
+    color: #53abf4;
+    /* background-color: #007bff;
+    color: #fff; */
+    /* border: none;
+    padding: 10px 20px;
+*/
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .add-course-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+  .delete-course-btn {
+    position: fixed;
+    top: 25%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 999;
+    color: #53abf4;
+    /* background-color: #007bff;
+    color: #fff; */
+    /* border: none;
+    padding: 10px 20px;
+*/
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .delete-course-btn:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+  .loading-icon {
+    animation: spin 1s infinite linear;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh; /* Ustawia kontener na pełną wysokość widoku */
+  }
+  .shortDesc{
+    line-height: 2;
+    text-align: justify;
+    font-size: 1.1rem;
+  }
+  /* Dodaj ten kod do pliku HomePage.css */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 0 !important;
+    height: 150px;
+  }
+
+  .pagination__item {
+    margin: 0 5px;
+  }
+  /* .pagination__link{
+    padding-left: 10px;
+ }
+ .pagination__link--active{
+    padding-right: 10px;
+ } */
+ li{
+    padding-right: 10px;
+    padding-left: 10px;
+ }
+  .pagination__link {
+    border: none;
+    border-radius: 5px;
+    padding: 0px I !important;
+    cursor: pointer;
+    text-decoration: none;
+  }

@@ -1,18 +1,51 @@
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import "./NavigationAuth.css"
+import "./NavigationAuth.css";
+import React, { useState, useEffect } from 'react';
 import { GiExitDoor } from "react-icons/gi";
 import { FaLaptopCode } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import NavigationAuthStyles from '../../modules/NavigationAuth.module.scss'
+import axios from 'axios';
+
 const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.reload();
   };
-const categories = ["cat1", "cat2", "cat3", "cat4"];
-
+  const loginToken = localStorage.getItem('token');
 function NavigationAuth() {
+const [categories, setCategories] = useState([]);
+console.log(loginToken)
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://34.136.176.140:8000/api/languages/', {headers: { "Authorization" : `Bearer ${loginToken}`, "Accept": '*/*'}});
+        setCategories(response.data);
+      } catch (error) {
+        console.error('Error fetching categories data:', error);
+      }
+    };
+
+    if (loginToken) {
+      fetchData();
+    }
+  }, [loginToken]);
+
+// useEffect(() => {
+//   const fetchCourses = async () => {
+//     try {
+//       const response = await fetch('http://34.136.176.140:8000/api/languages');
+//       const categoriesData = await response.json();
+//       setCategories(categoriesData);
+//     } catch (error) {
+//       console.error('Error fetching courses data:', error);
+//     }
+//   };
+
+//   fetchCourses();
+// }, []);
   return (
     <Navbar  className="NavAuth sticky-top" expand="lg">
 
@@ -24,7 +57,7 @@ function NavigationAuth() {
             <Nav.Link href="/Courses">Courses</Nav.Link>
             <NavDropdown title="Category" id="basic-nav-dropdown">
               {categories.map((cat, index) => (
-                   <NavDropdown.Item key={index} href={`/category/${cat}`}>{cat}</NavDropdown.Item>
+                   <NavDropdown.Item key={index} href={`/category/${cat.id}`}>{cat.name}</NavDropdown.Item>
             ))}
               {/* <NavDropdown.Item href="/category/frontend">Frontend</NavDropdown.Item>
               <NavDropdown.Item href="/category/backend">Backedn</NavDropdown.Item>
