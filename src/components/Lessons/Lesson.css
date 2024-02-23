@@ -6,10 +6,35 @@
 }
 
   .line-numbers {
-    width: 50px; /* Szerokość obszaru z numerami linii */
+    padding-right: 10px;
     border-right: 1px solid #ccc;
     font-size: 14px
   }
+  /* .lesson-content {
+    word-break: break-all;
+    overflow-wrap: break-word;
+} */
+.lesson-row{
+    margin-bottom: 15%;
+}
+.lesson-content p {
+    word-wrap: break-word; /* Ustawia zawijanie tekstu, jeśli nie mieści się w kontenerze */
+}
+.lesson-content p {
+    /* width: 100px; */
+    margin: 0.5em;
+    white-space: normal;
+    vertical-align: top;
+    display: inline-block;
+  }
+  p {
+    line-break: anywhere;
+    padding: 0% 5% 3% 5%;
+  }
+/* .col-md-6 {
+    overflow: auto;
+} */
+
 
   .textarea {
     flex: 1;
@@ -18,6 +43,9 @@
     font-family: monospace;
     font-size: 14px;
     overflow: hidden; /* Ukryj pasek przewijania w textarea */
+    background-color: black;
+    color: chartreuse;
+    width: 100%;
   }
   .textarea:focus{
     outline: none;
@@ -25,6 +53,7 @@
 
 .code-input-container{
     margin-right: 10%;
+
 }
 /* .lesson-container{
     height: 70vh;
@@ -32,4 +61,22 @@
 .submit-code-btn{
     margin-top: 50px;
     width: 100px;
+}
+.lesson-title{
+    text-align: center;
+    padding: 3% 10%
+}
+.lesson-content{
+    text-align: justify;
+    /* padding: 3% 5%; */
+    font-size: 1.5rem;
+    /* height: 50vh; */
+}
+.error_msg{
+    margin-top: 20px;
+    color: red;
+    font-size: 1.3rem;
+}
+.show-lessons{
+    margin: 2% 3%;
 }

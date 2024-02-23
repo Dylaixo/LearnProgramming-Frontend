@@ -27,7 +27,7 @@ function TopRatedCoursesCarousel() {
   console.log(sortedCourses )
   return (
     <div style={{ maxWidth: '50%', margin: '0 auto' }}>
-    <h1 style={{textAlign: 'center'}}>Najlepiej oceniane</h1>
+    <h1 style={{textAlign: 'center'}}>Najlepiej oceniane kursy</h1>
       <Carousel interval={null}>
         {sortedCourses.slice(0, 5).map((course, index) => (
           <Carousel.Item key={index}>

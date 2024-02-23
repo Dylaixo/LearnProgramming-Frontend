@@ -11,12 +11,9 @@ function App() {
   return (
 
     <Container fluid >
-    {/* <div>
-      <Auth/>
-    </div> */}
-    <div>
-         {token == null ? <Nonauth /> : <Auth />}
-    </div>
+      <div>
+        {token == null ? <Nonauth /> : <Auth />}
+      </div>
     </Container>
   );
 }

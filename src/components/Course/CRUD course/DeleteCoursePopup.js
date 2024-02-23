@@ -39,15 +39,15 @@ const handleDeleteModalOpen = (id) => {
         <AiFillDelete size={40} className="delete-course-btn " onClick={() => handleDeleteModalOpen(course.id)}></AiFillDelete>
       <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete Lesson</Modal.Title>
+          <Modal.Title>Usuń kurs</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete this lesson?
+          Czy jesteś pewny, żeby usunąć kurs?
         </Modal.Body>
         <Modal.Footer>
         <div className="d-flex justify-content-between">
-          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Cancel</Button>
-          <Button variant="danger" onClick={handleDeleteLesson}>Delete</Button>
+          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Anuluj</Button>
+          <Button variant="danger" onClick={handleDeleteLesson}>Usuń</Button>
         </div>
         </Modal.Footer>
       </Modal>

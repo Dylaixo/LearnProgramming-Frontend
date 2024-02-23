@@ -20,18 +20,20 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [showUserName, setShowUserName] = useState(false)
+  const [whoAmI, setWhoAmI] = useState('')
   const [commentFormVisible, setCommentFormVisible] = useState(false);
   const [userData, setUserData] = useState(""); // Id użytkownika, który jest aktualnie zalogowany
   const loginToken = localStorage.getItem('token');
   const handleStartCourse = () => {
+
     navigate(`/Courses/${courseId}`);
   };
-  const whoAmI = {
-    id: 4,
-    username: 'user1',
-    email: 'example@email.com',
-    bio: "user bio"
-  };
+  // const whoAmI = {
+  //   id: 4,
+  //   username: 'user1',
+  //   email: 'example@email.com',
+  //   bio: "user bio"
+  // };
   const fetchData = async () => {
     try {
       // Wysyłanie żądania GET do serwera
@@ -64,12 +66,19 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   }, []);
 
   useEffect(() => {
-
-  })
+    const fetchWhoAmI = async () => {
+        try {
+            const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+            setWhoAmI(response.data);
+        } catch (error) {
+            console.error('Error fetching logged data:', error);
+        }
+    };
+    fetchWhoAmI();
+}, [loginToken]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-    // owner.id = 5;
     const bodyParameters = {
       course: courseId,
         user: whoAmI.id,
@@ -131,7 +140,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   return (
     <>
       <Button variant="outline-primary" className='button' onClick={handleShow}>
-        <span>More details ... </span>
+        <span>Więcej ... </span>
       </Button>
       <Modal show={show} onHide={handleClose} >
         <Modal.Header closeButton>
@@ -140,11 +149,11 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
         <Modal.Body className='course-details mx-auto'>
           <p>{article.description}</p>
           <Button className='add-button course-detail' variant="primary" size="lg" onClick={handleStartCourse}>
-            Course page
+            Wyświetl kurs
           </Button>
         </Modal.Body>
 
-        <h5 className='share-title'>Comments</h5>
+        <h5 className='share-title'>Komentarze</h5>
         <hr />
         <Modal.Body className='comments-list'>
           {opinions.ratings ? (
@@ -166,7 +175,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
               </div>
             ))
           ) : (
-            <p>No ratings available</p>
+            <p>Brak komenatrzy dla tego kursu</p>
           )}
         </Modal.Body>
         <div className='add-holder'>
@@ -176,7 +185,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
           {commentFormVisible && (
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="commentForm">
-                <Form.Label>Add a comment:</Form.Label>
+                <Form.Label>Dodaj komentarz:</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
@@ -186,7 +195,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
                 />
               </Form.Group>
               <Form.Group controlId="ratingForm">
-                <Form.Label className='rating-label'>Rating {rating}/100</Form.Label>
+                <Form.Label className='rating-label'>Ocena {rating}/100</Form.Label>
                 <Form.Range
                   min="0"
                   max="100"

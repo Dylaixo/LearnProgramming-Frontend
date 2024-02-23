@@ -5,10 +5,10 @@ function WelcomePage() {
 
   return (
     <div>
-      <h1>Witaj na stronie powitalnej!</h1>
-      <p>
-        Witaj na naszej stronie! Jest nam bardzo miło, że tu jesteś.
-        Zapraszamy do zapoznania się z naszą ofertą i korzystania z naszych usług.
+      <h1 style={{"padding": "3% 3%"}}>Cieszymy się, że jesteś z nami.</h1>
+      <p style={{"lineHeight": "2.3", "fontSize": "1.5rem", "font-family": "Kode Mono"}}>
+      Witaj w LearnProgramming - miejscu, gdzie rozwijasz swoje umiejętności programistyczne i inspirujesz się wspólnie z nami.<br></br>
+      Rozpocznij swoją przygodę już teraz! Wybierz kurs, który Cię interesuje, i zanurz się w świat kodowania. <br></br> Jesteśmy tu, aby Ci pomóc na każdym kroku. Powodzenia!
       </p>
 
       {/* Dodaj inne treści lub komponenty, które chcesz wyświetlić */}

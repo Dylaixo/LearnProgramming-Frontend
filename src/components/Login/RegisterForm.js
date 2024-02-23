@@ -58,29 +58,29 @@ console.log(dataForm)
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicUsername">
-        <Form.Label>Username</Form.Label>
+        <Form.Label>Nazwa użytownika</Form.Label>
         <Form.Control type="username" placeholder="Username" name="username" value={dataForm.username} onChange={handleChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+        <Form.Label>Adres e-mail</Form.Label>
         <Form.Control type="email" placeholder="Enter email" name="email" value={dataForm.email} onChange={handleChange} />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
+        <Form.Label>Hasło</Form.Label>
         <Form.Control type="password" placeholder="Password" name="password" value={dataForm.password} onChange={handleChange} />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Confirm password</Form.Label>
+        <Form.Label>Potwierdz hasło</Form.Label>
         <Form.Control type="password" placeholder="Confirm password" name="password2" value={dataForm.password2} onChange={handleChange} />
         <Form.Text className="text-muted">
-          We'll never share your password with anyone else.
+          Nigdy nie udostępniaj swojego hasła!
         </Form.Text>
       </Form.Group>
         <Button variant="primary" style={{width: '100px'}} type="submit">
-          Submit
+          Zarejestruj
         </Button>
-        {isAdded && (<p>Registred successfully. Now you can log in</p>)}
+        {isAdded && (<p>Zaejestrowano pomyślnie, teraz możesz się zalogować</p>)}
     </Form>
   );
 }

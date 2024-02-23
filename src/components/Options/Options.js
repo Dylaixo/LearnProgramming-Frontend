@@ -8,9 +8,9 @@ function Options() {
             <div className='col-lg-4'>
                 <Card>
                     <Card.Body>
-                        <Card.Title>Start now!</Card.Title>
+                        <Card.Title>Zacznij teraz</Card.Title>
                         <Card.Text>
-                            Choose difficulty depends on your skills.
+                            Wybierz poziom trudności adekwatny do swoich umiejętności
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -18,9 +18,9 @@ function Options() {
             <div className='col-lg-4' >
                 <Card>
                     <Card.Body>
-                        <Card.Title>Join us!</Card.Title>
+                        <Card.Title>Dołącz do nas</Card.Title>
                         <Card.Text>
-                            Create your own courses to help other to understand content.
+                            Twórz własne kursy i pomagaj innym zrozumieć ich zawartość
                         </Card.Text>
                     </Card.Body>
                 </Card>
@@ -28,9 +28,9 @@ function Options() {
             <div className='col-lg-4'>
                 <Card>
                     <Card.Body>
-                        <Card.Title>Join us!</Card.Title>
+                        <Card.Title>Ucz się według swoich potrzeb</Card.Title>
                         <Card.Text>
-                            Create your own courses to help other to understand content.
+                            Dobieraj kursy wedle swoich upodobań
                         </Card.Text>
                     </Card.Body>
                 </Card>

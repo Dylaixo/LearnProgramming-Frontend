@@ -42,11 +42,11 @@ const LoginForm = () => {
 
     return (
       <div className="container">
-        <h1>Login</h1>
+        <h1>Logowanie</h1>
         {errors.non_field_errors && <Alert variant="danger">{errors.non_field_errors}</Alert>}
         <Form onSubmit={handleLogin}>
           <Form.Group controlId="formBasicUsername">
-            <Form.Label>Username</Form.Label>
+            <Form.Label>Nazwa użytkownika</Form.Label>
             <Form.Control type="text" placeholder="Enter username" name="username" value={dataForm.username} onChange={handleChange} isInvalid={!!errors.username} />
             <Form.Control.Feedback type="invalid">
               {errors.username}
@@ -54,7 +54,7 @@ const LoginForm = () => {
           </Form.Group>
 
           <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>Hasło</Form.Label>
             <Form.Control type="password" placeholder="Password" name="password" value={dataForm.password} onChange={handleChange} isInvalid={!!errors.password} />
             <Form.Control.Feedback type="invalid">
               {errors.password}
@@ -62,7 +62,7 @@ const LoginForm = () => {
           </Form.Group>
         {/* {token == null ? <p>Nie jesteś zalogowany</p> : <p>Zalogowany</p>} */}
           <Button variant="primary" type="submit">
-            Login
+            Zaloguj
           </Button>
         </Form>
       </div>

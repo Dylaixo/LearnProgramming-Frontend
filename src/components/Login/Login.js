@@ -20,11 +20,11 @@ function Login() {
   return (
     <>
       <Button className='log' variant="outline-primary" onClick={handleShow}>
-        Log in
+      Zaloguj się
       </Button>
       <Offcanvas show={showLogin} onHide={handleClose}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Log in</Offcanvas.Title>
+          <Offcanvas.Title>Zaloguj się</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <LoginForm />

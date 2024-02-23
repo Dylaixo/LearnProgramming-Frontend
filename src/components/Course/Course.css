@@ -26,9 +26,7 @@
   }
 
   .lesson-content {
-    background-color: #f9f9f9;
     padding: 10px;
-    border-left: 2px solid #ccc;
     margin-left: 10px;
     transition: opacity 2s ease;
     overflow: hidden;

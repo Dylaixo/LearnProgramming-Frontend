@@ -13,8 +13,8 @@ function Slider() {
               alt="Slide with many programming languages."
             />
             <Carousel.Caption>
-              <h2>Learn programming languages</h2>
-              <p>You can learn every possible language in the world!</p>
+              <h2>Ucz się języków programowania</h2>
+              <p>Możesz nauczyć się każdego języka programowania</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -24,9 +24,9 @@ function Slider() {
               alt="Third slide"
             />
             <Carousel.Caption>
-              <h2>Do simple tasks</h2>
+              <h2>Rób proste zadania</h2>
               <p>
-                Do smiple tasks to end course and improve your skills.
+                Rób proste zadania i ulepszaj swoje umiejętności
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -37,8 +37,8 @@ function Slider() {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h2>Create our community</h2>
-              <p>Make and share your opinions about courses</p>
+              <h2>Twórz społeczność</h2>
+              <p>Twórz własne lub oceniaj czyjeś kursy</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>

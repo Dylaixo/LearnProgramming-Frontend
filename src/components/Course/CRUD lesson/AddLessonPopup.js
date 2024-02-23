@@ -16,12 +16,12 @@ export default function AddLessonPopup({ fetchLessons }) {
     const loginToken = localStorage.getItem('token');
     const [lessonData, setLessonData] = useState({
         title: '',
-        content: '',
+        content: courseUrl,
         course: parseInt(courseUrl),
         expected_output: '',
         lesson_nr: 2
     });
-
+console.log(lessonData)
     const handleClose = () => {
         setShow(false)
         setLoading(false)
@@ -31,8 +31,10 @@ export default function AddLessonPopup({ fetchLessons }) {
     };
 
     const handleSave = async () => {
+        console.log(courseUrl)
+        console.log('xd')
         setLoading(true);
-        setLessonData({ ...lessonData, lesson_nr: 1, course: parseInt(courseUrl) })
+        setLessonData({ ...lessonData })
         console.log(lessonData)
         try {
             const response = await axios.post('http://34.136.176.140:8000/api/lessons/', lessonData,{headers: { "Authorization" : `Bearer ${loginToken}`}});
@@ -62,7 +64,7 @@ export default function AddLessonPopup({ fetchLessons }) {
             </Link>
             <Modal show={show} size='xl' onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Create lesson</Modal.Title>
+                    <Modal.Title>Stwórz lekcje</Modal.Title>
                 </Modal.Header>
                 {loading ? (
                     <div className="loading-container">
@@ -71,22 +73,22 @@ export default function AddLessonPopup({ fetchLessons }) {
                     <>
                         <Modal.Body className='mx-auto'>
                             <Form.Group controlId="title">
-                                <Form.Label>Title</Form.Label>
+                                <Form.Label>Tytuł</Form.Label>
                                 <Form.Control type="text" placeholder="Enter title" value={lessonData.title} onChange={(e) => setLessonData({ ...lessonData, title: e.target.value })} />
                             </Form.Group>
                             <Form.Group controlId="content">
-                                <Form.Label>Content of lesson</Form.Label>
+                                <Form.Label>Zawartość lekcji</Form.Label>
                                 <Form.Control as="textarea" rows={3} placeholder="Enter content" value={lessonData.content} onChange={(e) => setLessonData({ ...lessonData, content: e.target.value })} />
                             </Form.Group>
                             <Form.Group controlId="expected_output">
-                                <Form.Label>Expected output</Form.Label>
+                                <Form.Label>Oczekiwany wynik</Form.Label>
                                 <Form.Control type="text" placeholder="Enter expected output" value={lessonData.expected_output} onChange={(e) => setLessonData({ ...lessonData, expected_output: e.target.value })} />
                             </Form.Group>
                         </Modal.Body>
                         <Modal.Footer>
                             <div className="d-flex justify-content-between">
-                                <Button variant="secondary" onClick={handleClose}>Close</Button>
-                                <Button variant="primary" onClick={handleSave}>Save</Button>
+                                <Button variant="secondary" onClick={handleClose}>Zamknij</Button>
+                                <Button variant="primary" onClick={handleSave}>Zapisz</Button>
                             </div>
                         </Modal.Footer>
 

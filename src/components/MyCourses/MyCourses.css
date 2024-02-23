@@ -1,0 +1,22 @@
+.browser-icon{
+    margin: 10px;
+    cursor: pointer;
+}
+.typing-animation {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    font-size: 2rem;
+    animation: typing 3s steps(1000) backwards;
+    padding: 3% 5%
+}
+
+/* Keyframes for the typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+.mycourse-paragraph{
+    padding: 2% 7%;
+    font-size: 1.4rem;
+}

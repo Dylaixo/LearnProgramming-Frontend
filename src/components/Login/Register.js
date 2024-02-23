@@ -25,11 +25,11 @@ function Register() {
   return (
     <>
       <Button variant="outline-primary" onClick={handleShowRegister}>
-        Register
+        Zarejestruj się
       </Button>
       <Offcanvas show={showRegister} onHide={handleCloseRegister}>
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Register</Offcanvas.Title>
+          <Offcanvas.Title>Rejestracja</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <RegisterForm/>

@@ -17,9 +17,13 @@ const Course = () => {
   const [activeLesson, setActiveLesson] = useState(null);
   const [lessonsData, setLessonData] = useState('');
   const [loading, setLoading] = useState(true);
-  const [isOwner, setIsOwner] = useState(false);
+  const [loggedOwner, setLoggedOwner] = useState(false);
+  const [whoAmI, setWhoAmI] = useState('');
   const [courseData, setCourseData] = useState('');
   const [ownerData, setOwnerData] = useState('');
+  const [lessonId, setLessonId] = useState('');
+  const [startCourse, setStartCourse] = useState('');
+  const [isCourseStarted, setIsCourseStarted] = useState(false);
   const [editLessonData, setEditLessonData] = useState({
     id: '',
     title: '',
@@ -29,25 +33,63 @@ const Course = () => {
   const headers = {
     'Authorization': `Bearer ${loginToken}`,
   };
-  const whoAmI = {
-    id: 2,
-    username: 'user1',
-    email: 'example@email.com',
-    bio: "user bio"
-  };
   const navigate = useNavigate();
-  const { courseUrl} = useParams();
-  const handleGoToCourse = () => {
-    const lessonId = 1;
-    navigate(`/Courses/${courseUrl}/lesson/${lessonId}`);
+  const { courseUrl } = useParams();
+  useEffect(() => {
+    const fetchUserCourses = async () => {
+      try {
+        const response = await axios.get(`http://34.136.176.140:8000/api/usercourses/`, { headers });
+        const userCourses = response.data.courses;
+        console.log(userCourses)
+        console.log(courseUrl)
+        const isStarted = userCourses.includes(parseInt(courseUrl));
+        // console.log(userCourses.includes(parseInt(courseUrl)))
+        setIsCourseStarted(isStarted);
+        console.log(isStarted)
+      } catch (error) {
+        console.error('Error fetching user courses:', error);
+      }
+    };
+    fetchUserCourses();
+  }, []);
+  const handleGoToCourse = async () => {
+    try {
+      const response = await axios.post(`http://34.136.176.140:8000/api/startcourse/${courseUrl}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
+      console.log('Data sent successfully:', response.data);
+      setLessonId(response.data)
+    } catch (error) {
+      console.error('Error sending data:', error);
+    }
+
   };
+  const courseId = courseUrl.split('/')[1]; // Wyciągamy identyfikator kursu z courseUrl
   const toggleLesson = (id) => {
     setActiveLesson(activeLesson === id ? null : id);
+  };
+  useEffect(() => {
+    if (lessonId | isCourseStarted) {
+      navigate(`/Courses/${courseUrl}/Lesson/${lessonId.lesson_id}`)
+    }
+  }, [lessonId]);
+  const handleContinueCourse = () => {
+    navigate(`/Courses/${courseUrl}/Lesson/${lessonsData[0].id}`);
+  };
+
+
+  const fetchLogged = async () => {
+    try {
+      const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers });
+
+      setWhoAmI(response.data)
+      console.log(response.data)
+    } catch (error) {
+      console.error('Error fetching logged data:', error);
+    }
   };
 
   const fetchLessons = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/lessons/`, {headers});
+      const response = await axios.get(`http://34.136.176.140:8000/api/lessons/`, { headers });
       const lessons = response.data.filter((lesson) => lesson.course.toString() === courseUrl);
       setLessonData(lessons);
       setLoading(false);
@@ -57,7 +99,7 @@ const Course = () => {
   };
   const fetchOwnerData = async (ownerId) => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/user/${ownerId}/`, {headers});
+      const response = await axios.get(`http://34.136.176.140:8000/api/user/${ownerId}/`, { headers });
       setOwnerData(response.data);
     } catch (error) {
       console.error('Error fetching owner data:', error);
@@ -65,7 +107,7 @@ const Course = () => {
   };
   const fetchCourseData = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/course/${courseUrl}/`, {headers});
+      const response = await axios.get(`http://34.136.176.140:8000/api/course/${courseUrl}/`, { headers });
       setCourseData(response.data);
       fetchOwnerData(response.data.owner);
     } catch (error) {
@@ -73,17 +115,19 @@ const Course = () => {
     }
   };
   useEffect(() => {
-
+    fetchLogged();
     fetchCourseData();
     fetchLessons();
 
   }, [courseUrl]);
- useEffect(() => {
-  if (ownerData.id === whoAmI.id) {
-      setIsOwner(true);
-  }
- })
+  useEffect(() => {
+    if (ownerData.id === whoAmI.id) {
 
+      setLoggedOwner(true);
+    } else {
+      setLoggedOwner(false);
+    }
+  })
   return (
     <div>
       <div className="course-container">
@@ -91,17 +135,24 @@ const Course = () => {
         <div className="course-details">
           <h2 className="course-title">{courseData.title}</h2>
           <p>Author: {ownerData.username}</p>
-          <p className='send-email' onClick={() => window.location.href = `mailto:${ownerData.email}`}><BsMailboxFlag size={20}/> {ownerData.email}</p>
+          <p className='send-email' onClick={() => window.location.href = `mailto:${ownerData.email}`}><BsMailboxFlag size={20} /> {ownerData.email}</p>
           <p>{ownerData.bio}</p>
           <p className="course-description">{courseData.description}</p>
-          <Button variant="outline-primary" className='button' onClick={handleGoToCourse}>
-            <span>Start course</span>
-          </Button>
-          {isOwner &&(
+          {isCourseStarted ? (
+            <Button variant="outline-primary" className='button' onClick={handleContinueCourse}>
+              <span>Continue course</span>
+            </Button>
+          ) : (
+            <Button variant="outline-primary" className='button' onClick={handleGoToCourse}>
+              <span>Start course</span>
+            </Button>
+          )}
+
+          {loggedOwner && (
             <>
-            <DeleteCoursePopup course={courseData} token={loginToken}/>
-            <EditCoursePopup fetchCourseData={fetchCourseData} course={courseData} token={loginToken}/>
-            <AddLessonPopup fetchLessons={fetchLessons} token={loginToken}/>
+              <DeleteCoursePopup course={courseData} />
+              <EditCoursePopup fetchCourseData={fetchCourseData} course={courseData} />
+              <AddLessonPopup fetchLessons={fetchLessons} />
             </>
           )}
         </div>
@@ -114,10 +165,10 @@ const Course = () => {
               <div>
                 <button className="lesson-button" onClick={() => toggleLesson(lesson.id)}>
                   {lesson.title}
-                  {isOwner && (
+                  {loggedOwner && (
                     <>
-                    <EditLessonPopup lesson={lesson} fetchLessons={fetchLessons} token={loginToken}/>
-                    <DeleteLessonPopup lesson={lesson} fetchLessons={fetchLessons} token={loginToken}/>
+                      <EditLessonPopup lesson={lesson} fetchLessons={fetchLessons} />
+                      <DeleteLessonPopup lesson={lesson} fetchLessons={fetchLessons} />
                     </>
                   )}
                   {/* <FiEdit3 className="edit-icon"size={25} onClick={() => handleEditModalOpen(lesson)} /> */}

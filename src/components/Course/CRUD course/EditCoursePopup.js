@@ -11,7 +11,6 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const loginToken = localStorage.getItem('token');
-  console.log(loginToken)
   const [courseData, setCourseData] = useState({
     title: course.title,
     owner: course.owner,
@@ -60,8 +59,6 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
 
   const handleSave = async () => {
     setLoading(true);
-    console.log(course.id)
-    console.log(courseData)
     try {
 
       const response = await axios.put(`http://34.136.176.140:8000/api/course/${course.id}/`, courseData, {headers: { "Authorization" : `Bearer ${loginToken}`}} );
@@ -81,7 +78,7 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
       </Link>
       <Modal show={show} size='xl' onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Edit course</Modal.Title>
+          <Modal.Title>Edytuj kurs</Modal.Title>
         </Modal.Header>
         {loading ? (
           <div className="loading-container">
@@ -90,11 +87,11 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
           <>
             <Modal.Body className='mx-auto'>
               <Form.Group controlId="title">
-                <Form.Label>Title</Form.Label>
+                <Form.Label>Tytuł</Form.Label>
                 <Form.Control type="text" placeholder={course.title ? course.title : "Enter title"} value={courseData.title} onChange={(e) => setCourseData({ ...courseData, title: e.target.value })} />
               </Form.Group>
               <Form.Group controlId="language">
-                <Form.Label>Language</Form.Label>
+                <Form.Label>Język</Form.Label>
                 <Form.Control as="select" value={courseData.language} onChange={e => setCourseData({ ...courseData, language: e.target.value })}>
                   <option value="">{language}</option>
                   {languages.map(language => (
@@ -105,22 +102,22 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
                 </Form.Control>
               </Form.Group>
               <Form.Group controlId="description">
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Opis</Form.Label>
                 <Form.Control as="textarea" rows={3} placeholder={course.description ? course.description : "Enter short description"} value={courseData.description} onChange={(e) => setCourseData({ ...courseData, description: e.target.value })} />
               </Form.Group>
               <Form.Group controlId="shortDesc">
-                <Form.Label>Short Description</Form.Label>
+                <Form.Label>Krótki opis</Form.Label>
                 <Form.Control type="text" placeholder={course.short_desc ? course.short_desc : "Enter short description"} value={courseData.short_desc} onChange={(e) => setCourseData({ ...courseData, short_desc: e.target.value })} />
               </Form.Group>
               <Form.Group controlId="url">
-                <Form.Label>URL to image</Form.Label>
+                <Form.Label>URL do zdjęcia</Form.Label>
                 <Form.Control type="text" placeholder={course.url ? course.url : "Enter URL to image"} value={courseData.url} onChange={(e) => setCourseData({ ...courseData, url: e.target.value })} />
               </Form.Group>
             </Modal.Body>
             <Modal.Footer>
               <div className="d-flex justify-content-between">
-                <Button variant="secondary" onClick={handleClose}>Close</Button>
-                <Button variant="primary" onClick={handleSave}>Save</Button>
+                <Button variant="secondary" onClick={handleClose}>Zamknij</Button>
+                <Button variant="primary" onClick={handleSave}>Zapisz</Button>
               </div>
             </Modal.Footer>
           </>

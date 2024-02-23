@@ -69,7 +69,7 @@ function HomePage() {
                   <Card.Title>{article.title.length > 33 ? article.title.slice(0, 33) + '...' : article.title}</Card.Title>
                   <Card.Img variant="bottom" src={article.url} />
                   <Rating rating={[article.avg_rating, article.count_rating]} />
-                  <p className='author'>Author: {getUserNameById(article.owner)}</p>
+                  <p className='author'>Autor: {getUserNameById(article.owner)}</p>
                   <p className='shortDesc'>{article.short_desc.slice(0,100)}</p>
                   <AddCoursePopup article={article} onAddCourse={handleAddCourse} fetchCourses={fetchCourses}/>
                   <PopupCourse article={article} courseId={article.id} fetchCourses={fetchCourses} />

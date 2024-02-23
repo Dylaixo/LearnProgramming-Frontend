@@ -1,0 +1,13 @@
+.list-group-container {
+    display: flex;
+    justify-content: center; /* Centruje elementy wzdłuż osi poziomej */
+    margin-top: 5%;
+}
+
+.shadow {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Dodaje cień do listy */
+    width: 50%;
+}
+.list-group-item{
+    padding: 3%;
+}
