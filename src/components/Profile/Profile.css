@@ -11,3 +11,10 @@
 .list-group-item{
     padding: 3%;
 }
+.add-desc{
+    width: 150px;
+}
+.save-button{
+    width: 150px;
+    margin-top: 15px;
+}

@@ -32,15 +32,15 @@ export default function DeleteLessonPopup({ fetchLessons, lesson }) {
       </>
       <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Delete Lesson</Modal.Title>
+          <Modal.Title>Usuń lekcje</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Are you sure you want to delete this lesson?
+          Jesteś pewny, żeby usunąc lekcje ?
         </Modal.Body>
         <Modal.Footer>
           <div className="d-flex justify-content-between">
-            <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Cancel</Button>
-            <Button variant="danger" onClick={handleDeleteLesson}>Delete</Button>
+            <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Anuluj</Button>
+            <Button variant="danger" onClick={handleDeleteLesson}>Usuń</Button>
           </div>
         </Modal.Footer>
       </Modal>

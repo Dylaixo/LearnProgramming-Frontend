@@ -206,7 +206,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
               </Form.Group>
               <div className='add-button-div mx-auto'>
               <Button className='add-button' type="submit" disabled={loading}>
-                {loading ? 'Adding Comment...' : 'Add Comment'}
+                {loading ? 'Dodawanie komenatrza...' : 'Dodaj komentarz'}
               </Button>
               </div>
               {error && <p className="text-danger">{error}</p>}

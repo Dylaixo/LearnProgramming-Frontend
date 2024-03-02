@@ -31,11 +31,8 @@ console.log(lessonData)
     };
 
     const handleSave = async () => {
-        console.log(courseUrl)
-        console.log('xd')
         setLoading(true);
         setLessonData({ ...lessonData })
-        console.log(lessonData)
         try {
             const response = await axios.post('http://34.136.176.140:8000/api/lessons/', lessonData,{headers: { "Authorization" : `Bearer ${loginToken}`}});
             console.log('Data sent successfully:', response.data);

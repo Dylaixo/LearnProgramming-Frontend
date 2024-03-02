@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerActions } from '../../store/registerForm-slice';
-
+import './Forms.css'
 function RegisterForm() {
 
   const dispatch = useDispatch();
@@ -77,7 +77,7 @@ console.log(dataForm)
           Nigdy nie udostępniaj swojego hasła!
         </Form.Text>
       </Form.Group>
-        <Button variant="primary" style={{width: '100px'}} type="submit">
+        <Button variant="primary" className='register-button' type="submit">
           Zarejestruj
         </Button>
         {isAdded && (<p>Zaejestrowano pomyślnie, teraz możesz się zalogować</p>)}

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '../../store/loginForm-slice';
-
+import './Forms.css'
 const LoginForm = () => {
 
     const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const LoginForm = () => {
             </Form.Control.Feedback>
           </Form.Group>
         {/* {token == null ? <p>Nie jesteś zalogowany</p> : <p>Zalogowany</p>} */}
-          <Button variant="primary" type="submit">
+          <Button className='login-button' variant="primary" type="submit">
             Zaloguj
           </Button>
         </Form>

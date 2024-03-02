@@ -26,10 +26,7 @@
     white-space: normal;
     vertical-align: top;
     display: inline-block;
-  }
-  p {
     line-break: anywhere;
-    padding: 0% 5% 3% 5%;
   }
 /* .col-md-6 {
     overflow: auto;

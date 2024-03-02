@@ -43,12 +43,12 @@ export default function EditLessonPopup({ fetchLessons, lesson }) {
             <FiEdit3 className="edit-icon" size={25} onClick={() => handleEditModalOpen(lesson)} />
             <Modal show={showEditModal} onHide={() => setShowEditModal(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit Lesson</Modal.Title>
+                    <Modal.Title>Edytuj lekcje</Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='mx-auto'>
                     <Form>
                         <Form.Group controlId="title">
-                            <Form.Label>Title</Form.Label>
+                            <Form.Label>Tytuł</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="title"
@@ -57,7 +57,7 @@ export default function EditLessonPopup({ fetchLessons, lesson }) {
                             />
                         </Form.Group>
                         <Form.Group controlId="content">
-                            <Form.Label>Content</Form.Label>
+                            <Form.Label>Treść lekcji</Form.Label>
                             <Form.Control
                                 as="textarea"
                                 name="content"
@@ -66,7 +66,7 @@ export default function EditLessonPopup({ fetchLessons, lesson }) {
                             />
                         </Form.Group>
                         <Form.Group controlId="expected_output">
-                            <Form.Label>Expected Output</Form.Label>
+                            <Form.Label>Oczekiwany wynik</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="expected_output"
@@ -78,8 +78,8 @@ export default function EditLessonPopup({ fetchLessons, lesson }) {
                 </Modal.Body>
                 <Modal.Footer>
                 <div className="d-flex justify-content-between">
-                    <Button variant="secondary" onClick={() => setShowEditModal(false)}>Close</Button>
-                    <Button variant="primary" onClick={handleSaveEditLesson}>Save</Button>
+                    <Button variant="secondary" onClick={() => setShowEditModal(false)}>Anuluj</Button>
+                    <Button variant="primary" onClick={handleSaveEditLesson}>Zapisz</Button>
                 </div>
                 </Modal.Footer>
             </Modal>

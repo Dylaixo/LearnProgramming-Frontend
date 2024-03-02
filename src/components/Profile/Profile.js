@@ -52,7 +52,7 @@ function Profile() {
                     <ListGroup.Item>
                         {whoAmI.bio === null ? (
                             <>
-                                <Button variant='primary' onClick={handleShowAddBio}>Dodaj opis</Button>
+                                <Button className='add-desc' variant='primary' onClick={handleShowAddBio}>Dodaj opis</Button>
                                 {showAddBio && (
                                     <>
                                         <Form.Group controlId="description">
@@ -72,7 +72,7 @@ function Profile() {
                                             />
 
                                         </Form.Group>
-                                        <Button variant="primary" onClick={handleSave}>Zapisz</Button>
+                                        <Button className='save-button' variant="primary" onClick={handleSave}>Zapisz</Button>
 
                                     </>
                                 )}
