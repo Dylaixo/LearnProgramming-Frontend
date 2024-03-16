@@ -55,7 +55,7 @@ const Course = () => {
     } catch (error) {
       console.error('Error sending data:', error);
     }
-
+    navigate(`/Courses/${courseUrl}/Lesson/${lessonsData[0].id}`);
   };
   const courseId = courseUrl.split('/')[1]; // Wyciągamy identyfikator kursu z courseUrl
   const toggleLesson = (id) => {
