@@ -25,7 +25,7 @@ const TextareaWithLineNumbers = ({ requestBody, lessonId }) => {
   const handleNextLesson = async () => {
     if (!complieResult.error) {
       try {
-        const response = await axios.post(`http://34.136.176.140:8000/api/nextlesson/${lessonId}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
+        const response = await axios.post(`http://localhost:8000/api/nextlesson/${lessonId}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
         console.log('Next lesson data:', response.data);
         setNextLesson(response.data);
         complieResult.error = undefined;
@@ -61,12 +61,12 @@ const TextareaWithLineNumbers = ({ requestBody, lessonId }) => {
     event.preventDefault();
     const combinedRequestBody = { ...requestBody, compile_code: value };
     try {
-      const response = await axios.post('http://34.136.176.140:8000/api/compile/', combinedRequestBody, { headers: { "Authorization": `Bearer ${loginToken}` } });
+      const response = await axios.post('http://localhost:8000/api/compile/', combinedRequestBody, { headers: { "Authorization": `Bearer ${loginToken}` } });
       console.log('Data sent successfully:', response.data);
       setCompileResult(response.data);
       console.log('after post: ' + response.data.error)
       if (!response.data.error) {
-        const response2 = await axios.post(`http://34.136.176.140:8000/api/finishlesson/${lessonId}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
+        const response2 = await axios.post(`http://localhost:8000/api/finishlesson/${lessonId}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
         console.log('Lesson finished successfully: ' + response2.data);
         setIsLastLesson(response2.data)
         console.log(response2.data)

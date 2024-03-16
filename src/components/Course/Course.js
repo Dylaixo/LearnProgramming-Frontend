@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { AiOutlineLoading3Quarters, AiFillDelete } from "react-icons/ai";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { BsMailboxFlag } from "react-icons/bs";
-import { FiEdit3 } from "react-icons/fi";
 import './Course.css';
 import AddLessonPopup from './CRUD lesson/AddLessonPopup';
 import DeleteLessonPopup from './CRUD lesson/DeleteLessonPopup';
 import EditLessonPopup from './CRUD lesson/EditLessonPopup';
-import AddCoursePopup from '../Popup/AddCoursePopup';
 import EditCoursePopup from './CRUD course/EditCoursePopup';
 import DeleteCoursePopup from './CRUD course/DeleteCoursePopup';
 
@@ -38,14 +36,11 @@ const Course = () => {
   useEffect(() => {
     const fetchUserCourses = async () => {
       try {
-        const response = await axios.get(`http://34.136.176.140:8000/api/usercourses/`, { headers });
+        const response = await axios.get(`http://localhost:8000/api/usercourses/`, { headers });
         const userCourses = response.data.courses;
-        console.log(userCourses)
-        console.log(courseUrl)
         const isStarted = userCourses.includes(parseInt(courseUrl));
         // console.log(userCourses.includes(parseInt(courseUrl)))
         setIsCourseStarted(isStarted);
-        console.log(isStarted)
       } catch (error) {
         console.error('Error fetching user courses:', error);
       }
@@ -54,7 +49,7 @@ const Course = () => {
   }, []);
   const handleGoToCourse = async () => {
     try {
-      const response = await axios.post(`http://34.136.176.140:8000/api/startcourse/${courseUrl}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
+      const response = await axios.post(`http://localhost:8000/api/startcourse/${courseUrl}/`, {}, { headers: { "Authorization": `Bearer ${loginToken}` } });
       console.log('Data sent successfully:', response.data);
       setLessonId(response.data)
     } catch (error) {
@@ -78,7 +73,7 @@ const Course = () => {
 
   const fetchLogged = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers });
+      const response = await axios.get(`http://localhost:8000/api/whoami/`, { headers });
 
       setWhoAmI(response.data)
       console.log(response.data)
@@ -89,7 +84,7 @@ const Course = () => {
 
   const fetchLessons = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/lessons/`, { headers });
+      const response = await axios.get(`http://localhost:8000/api/lessons/`, { headers });
       const lessons = response.data.filter((lesson) => lesson.course.toString() === courseUrl);
       setLessonData(lessons);
       setLoading(false);
@@ -99,7 +94,7 @@ const Course = () => {
   };
   const fetchOwnerData = async (ownerId) => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/user/${ownerId}/`, { headers });
+      const response = await axios.get(`http://localhost:8000/api/user/${ownerId}/`, { headers });
       setOwnerData(response.data);
     } catch (error) {
       console.error('Error fetching owner data:', error);
@@ -107,7 +102,7 @@ const Course = () => {
   };
   const fetchCourseData = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/course/${courseUrl}/`, { headers });
+      const response = await axios.get(`http://localhost:8000/api/course/${courseUrl}/`, { headers });
       setCourseData(response.data);
       fetchOwnerData(response.data.owner);
     } catch (error) {

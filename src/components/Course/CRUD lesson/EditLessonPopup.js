@@ -30,7 +30,7 @@ export default function EditLessonPopup({ fetchLessons, lesson }) {
 
     const handleSaveEditLesson = async () => {
         try {
-            await axios.put(`http://34.136.176.140:8000/api/lesson/${editLessonData.id}/`, editLessonData, {headers: { "Authorization" : `Bearer ${loginToken}`}}, );
+            await axios.put(`http://localhost:8000/api/lesson/${editLessonData.id}/`, editLessonData, {headers: { "Authorization" : `Bearer ${loginToken}`}}, );
             fetchLessons();
             setShowEditModal(false);
         } catch (error) {

@@ -27,7 +27,7 @@ const handleDeleteModalOpen = (id) => {
   };
   const handleDeleteLesson = async () => {
     try {
-      await axios.delete(`http://34.136.176.140:8000/api/course/${courseToDelete}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}}, );
+      await axios.delete(`http://localhost:8000/api/course/${courseToDelete}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}}, );
       setShowDeleteModal(false);
       window.location.href = '/Courses';
     } catch (error) {

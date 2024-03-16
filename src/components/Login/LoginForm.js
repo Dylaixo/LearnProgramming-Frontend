@@ -20,7 +20,7 @@ const LoginForm = () => {
       };
       console.log(dataForm)
       try {
-        const response = await axios.post('http://34.136.176.140:8000/api/token/', data.body, { headers });
+        const response = await axios.post('http://localhost:8000/api/token/', data.body, { headers });
         console.log(response.data.access_token)
         console.log(data.body)
         const token = response.data.access;

@@ -25,7 +25,7 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
   useEffect(() => {
     const fetchLanguages = async () => {
       try {
-        const response = await axios.get('http://34.136.176.140:8000/api/languages/', {headers: { "Authorization" : `Bearer ${loginToken}`}}); // Pobieramy dostępne języki z serwera
+        const response = await axios.get('http://localhost:8000/api/languages/', {headers: { "Authorization" : `Bearer ${loginToken}`}}); // Pobieramy dostępne języki z serwera
         setLanguages(response.data); // Aktualizujemy stan z dostępnymi językami
       } catch (error) {
         console.error('Error fetching languages:', error);
@@ -33,7 +33,7 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
     };
     const fetchLanguage = async () => {
         try {
-          const response = await axios.get(`http://34.136.176.140:8000/api/language/${course.language}/`,  {headers: { "Authorization" : `Bearer ${loginToken}`}}); // Pobieramy dostępne języki z serwera
+          const response = await axios.get(`http://localhost:8000/api/language/${course.language}/`,  {headers: { "Authorization" : `Bearer ${loginToken}`}}); // Pobieramy dostępne języki z serwera
           setLanguage(response.data.name);
         } catch (error) {
           console.error('Error fetching languages:', error);
@@ -61,7 +61,7 @@ export default function EditCoursePopup({ fetchCourseData, courseToEdit, course 
     setLoading(true);
     try {
 
-      const response = await axios.put(`http://34.136.176.140:8000/api/course/${course.id}/`, courseData, {headers: { "Authorization" : `Bearer ${loginToken}`}} );
+      const response = await axios.put(`http://localhost:8000/api/course/${course.id}/`, courseData, {headers: { "Authorization" : `Bearer ${loginToken}`}} );
       console.log('Data sent successfully:', response.data);
     } catch (error) {
       console.error('Error sending data:', error);

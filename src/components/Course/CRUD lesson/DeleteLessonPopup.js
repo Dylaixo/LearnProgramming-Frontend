@@ -18,7 +18,7 @@ export default function DeleteLessonPopup({ fetchLessons, lesson }) {
   };
   const handleDeleteLesson = async () => {
     try {
-      await axios.delete(`http://34.136.176.140:8000/api/lesson/${lessonToDelete}/`, { headers: { "Authorization": `Bearer ${loginToken}` } },);
+      await axios.delete(`http://localhost:8000/api/lesson/${lessonToDelete}/`, { headers: { "Authorization": `Bearer ${loginToken}` } },);
       fetchLessons();
       setShowDeleteModal(false);
     } catch (error) {

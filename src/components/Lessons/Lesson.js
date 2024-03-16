@@ -17,7 +17,7 @@ const Lesson = () => {
     useEffect(() => {
         const fetchLesson = async () => {
             try {
-                const response = await axios.get(`http://34.136.176.140:8000/api/lesson/${lessonId}/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+                const response = await axios.get(`http://localhost:8000/api/lesson/${lessonId}/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
                 setLessonData(response.data);
                 console.log(response.data)
             } catch (error) {

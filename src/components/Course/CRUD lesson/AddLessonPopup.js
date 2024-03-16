@@ -21,7 +21,6 @@ export default function AddLessonPopup({ fetchLessons }) {
         expected_output: '',
         lesson_nr: 2
     });
-console.log(lessonData)
     const handleClose = () => {
         setShow(false)
         setLoading(false)
@@ -34,7 +33,7 @@ console.log(lessonData)
         setLoading(true);
         setLessonData({ ...lessonData })
         try {
-            const response = await axios.post('http://34.136.176.140:8000/api/lessons/', lessonData,{headers: { "Authorization" : `Bearer ${loginToken}`}});
+            const response = await axios.post('http://localhost:8000/api/lessons/', lessonData,{headers: { "Authorization" : `Bearer ${loginToken}`}});
             console.log('Data sent successfully:', response.data);
 
         } catch (error) {

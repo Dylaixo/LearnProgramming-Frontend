@@ -13,7 +13,7 @@ function TopRatedCoursesCarousel() {
     };
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('http://34.136.176.140:8000/api/courses/', {headers});
+        const response = await axios.get('http://localhost:8000/api/courses/', {headers});
         setCourses(response.data);
         console.log(courses)
       } catch (error) {

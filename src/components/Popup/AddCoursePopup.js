@@ -25,7 +25,7 @@ export default function AddCoursePopup({ fetchCourses }) {
   // Nowa funkcja do pobierania danych o użytkowniku
   const fetchUserData = async () => {
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+      const response = await axios.get(`http://localhost:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
       setWhoAmI(response.data);
     } catch (error) {
       console.error('Error fetching user data:', error);
@@ -41,7 +41,7 @@ export default function AddCoursePopup({ fetchCourses }) {
   useEffect(() => {
     const fetchLanguages = async () => {
       try {
-        const response = await axios.get('http://34.136.176.140:8000/api/languages/', { headers: { "Authorization": `Bearer ${loginToken}` } });
+        const response = await axios.get('http://localhost:8000/api/languages/', { headers: { "Authorization": `Bearer ${loginToken}` } });
         setLanguages(response.data);
       } catch (error) {
         console.error('Error fetching languages:', error);
@@ -64,7 +64,7 @@ export default function AddCoursePopup({ fetchCourses }) {
   const handleSave = async () => {
     setLoading(true);
     try {
-      const response = await axios.post('http://34.136.176.140:8000/api/courses/', courseData, { headers: { "Authorization": `Bearer ${loginToken}` } });
+      const response = await axios.post('http://localhost:8000/api/courses/', courseData, { headers: { "Authorization": `Bearer ${loginToken}` } });
       console.log('Data sent successfully:', response.data);
     } catch (error) {
       console.error('Error sending data:', error);

@@ -17,7 +17,7 @@ function MyCourses() {
     useEffect(() => {
         const fetchLogged = async () => {
             try {
-                const response = await axios.get(`http://34.136.176.140:8000/api/usercourses/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+                const response = await axios.get(`http://localhost:8000/api/usercourses/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
                 setUserCoursesIds(response.data);
                 console.log(userCoursesIds.courses);
             } catch (error) {
@@ -26,7 +26,7 @@ function MyCourses() {
         };
         const fetchWhoAmI = async () => {
             try {
-                const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+                const response = await axios.get(`http://localhost:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
                 setWhoAmI(response.data);
             } catch (error) {
                 console.error('Error fetching logged data:', error);
@@ -38,7 +38,7 @@ function MyCourses() {
     useEffect(() => {
         const fetchCourses = async () => {
             try {
-                const response = await axios.get(`http://34.136.176.140:8000/api/courses/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+                const response = await axios.get(`http://localhost:8000/api/courses/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
                 const courses = response.data.filter(course => userCoursesIds.courses.includes(parseInt(course.id)));
                 setUserCourses(courses);
                 console.log(userCourses)

@@ -37,7 +37,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   const fetchData = async () => {
     try {
       // Wysyłanie żądania GET do serwera
-      const response = await axios.get(`http://34.136.176.140:8000/api/course/${article.id}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
+      const response = await axios.get(`http://localhost:8000/api/course/${article.id}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
 
       // Pobieranie danych z odpowiedzi
       setOpinions(response.data);
@@ -55,7 +55,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   useEffect(() => {
     const fetchOwner = async () => {
       try {
-        const response = await axios.get(`http://34.136.176.140:8000/api/user/${article.owner}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
+        const response = await axios.get(`http://localhost:8000/api/user/${article.owner}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
         setOwnerData(response.data);
       } catch (error) {
         console.error('Error fetching courses data:', error);
@@ -68,7 +68,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
   useEffect(() => {
     const fetchWhoAmI = async () => {
         try {
-            const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+            const response = await axios.get(`http://localhost:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
             setWhoAmI(response.data);
         } catch (error) {
             console.error('Error fetching logged data:', error);
@@ -88,7 +88,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
 
     console.log(bodyParameters)
     try {
-      const response = await axios.post('http://34.136.176.140:8000/api/opinions/', bodyParameters, {headers: { "Authorization" : `Bearer ${loginToken}`}} ,).then(function (res) {
+      const response = await axios.post('http://localhost:8000/api/opinions/', bodyParameters, {headers: { "Authorization" : `Bearer ${loginToken}`}} ,).then(function (res) {
         setComment('');
         setRating(0);
         handleClose();
@@ -119,7 +119,7 @@ export default function PopupCourse({ article, courseId, fetchCourses }) {
     }));
 
     try {
-      const response = await axios.get(`http://34.136.176.140:8000/api/user/${userId}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
+      const response = await axios.get(`http://localhost:8000/api/user/${userId}/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
       const updatedRatings = [...opinions.ratings];
       updatedRatings[index].userData = response.data;
       setOpinions({ ...opinions, ratings: updatedRatings });

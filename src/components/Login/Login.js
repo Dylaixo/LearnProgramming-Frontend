@@ -20,7 +20,7 @@ function Login() {
   return (
     <>
       <Button className='log' variant="outline-primary" onClick={handleShow}>
-      Zaloguj się
+        Zaloguj się
       </Button>
       <Offcanvas show={showLogin} onHide={handleClose}>
         <Offcanvas.Header closeButton>

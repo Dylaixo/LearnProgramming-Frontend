@@ -13,7 +13,7 @@ function Profile() {
     const fetchData = async () => {
         try {
             // Wysyłanie żądania GET do serwera
-            const response = await axios.get(`http://34.136.176.140:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
+            const response = await axios.get(`http://localhost:8000/api/whoami/`, { headers: { "Authorization": `Bearer ${loginToken}` } });
 
             // Pobieranie danych z odpowiedzi
             setWhoAmI(response.data);
@@ -35,7 +35,7 @@ function Profile() {
                 email: whoAmI.email, // Użyj obecnego email
             };
             console.log(newData)
-            await axios.put(`http://34.136.176.140:8000/api/user/${whoAmI.id}/`, newData, { headers: { "Authorization": `Bearer ${loginToken}` } });
+            await axios.put(`http://localhost:8000/api/user/${whoAmI.id}/`, newData, { headers: { "Authorization": `Bearer ${loginToken}` } });
             fetchData();
         } catch (error) {
             console.error('Error saving lesson data:', error);

@@ -14,7 +14,7 @@ function HomePage() {
   const loginToken = localStorage.getItem('token');
   const fetchCourses = async () => {
     try {
-      const response = await fetch('http://34.136.176.140:8000/api/courses/', {headers: { "Authorization" : `Bearer ${loginToken}`}});
+      const response = await fetch('http://localhost:8000/api/courses/', {headers: { "Authorization" : `Bearer ${loginToken}`}});
       const coursesData = await response.json();
       setCourses(coursesData);
       setLoading(false);
@@ -27,7 +27,7 @@ function HomePage() {
     const fetchUsers = async () => {
       try {
         // Wysyłanie żądania GET do serwera
-        const response = await axios.get(`http://34.136.176.140:8000/api/users/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
+        const response = await axios.get(`http://localhost:8000/api/users/`, {headers: { "Authorization" : `Bearer ${loginToken}`}});
 
         // Pobieranie danych z odpowiedzi
         setUsers(response.data);

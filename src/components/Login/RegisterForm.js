@@ -24,7 +24,7 @@ console.log(dataForm)
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://34.136.176.140:8000/api/users/', dataForm);
+      const response = await axios.post('http://localhost:8000/api/users/', dataForm);
       console.log(response.data);
       console.log(JSON.stringify(response.data))
       console.log('wysłano kod na email: ' + JSON.stringify(dataForm.email))
@@ -37,7 +37,7 @@ console.log(dataForm)
 
   const handleVerifyCode = async () => {
     try {
-      const response = await axios.post(`http://34.136.176.140:8000/api/users/`, {
+      const response = await axios.post(`http://localhost:8000/api/users/`, {
         email: dataForm.email,
         code: authCode,
       });
